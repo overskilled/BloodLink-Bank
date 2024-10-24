@@ -1,34 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import BloodBankDashboard from './pages/Dashboard/BloodBankDashboard'
+import BloodStockManagement from './pages/Management/BloodStockManagement'
+import TrackingBloodRequests from './pages/BloodRequest/TrackingBloodRequests'
+import CertifyingDonors from './pages/Donors/Certifying'
+import SendingNotificationsToDonors from './pages/Donors/Notification'
+import CoordinationWithHospitals from './pages/Hospitals/CoordinationWithHospitals'
+import CollaborationWithBloodBanks from './pages/BloodBanks/Collaboration'
+import Login from './pages/Auth/Login'
+import EditingDonorInformation from './pages/Donors/EditingInfo'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<BloodBankDashboard />} />
+        <Route path="/blood-stock-management" element={<BloodStockManagement />} />
+        <Route path="/tracking-blood-requests" element={<TrackingBloodRequests />} />
+        <Route path="/certifying-donors" element={<CertifyingDonors />} />
+        <Route path="/sending-notifications-to-donors" element={<SendingNotificationsToDonors />} />
+        <Route path="/coordination-with-hospitals" element={<CoordinationWithHospitals />} />
+        <Route path="/collaboration-with-blood-banks" element={<CollaborationWithBloodBanks />} />
+        <Route path="/editing-donor-information" element={<EditingDonorInformation   />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
